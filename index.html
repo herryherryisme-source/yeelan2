@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>宜蘭兩天一夜之旅｜11/27 – 11/28</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-soft: #f0f4f5;
+      --text: #162127;
+      --text-muted: #5c6b73;
+      --primary: #0f5257;
+      --primary-light: #e6f2f3;
+      --accent: #e06d53;
+      --accent-soft: #fdf0ed;
+      --warn-bg: #fff4e5;
+      --warn-border: #f59e0b;
+      --warn-text: #92400e;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --border: #e5eaee;
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(15, 35, 45, 0.06);
+      --shadow-sm: 0 2px 8px rgba(15, 35, 45, 0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Sticky Top Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Progress bar under navbar */
+    .progress-track {
+      height: 3px;
+      background: var(--border);
+      width: 100%;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.35s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, #0b3940 0%, #155e63 52%, #297a7e 100%);
+      color: #ffffff;
+      padding: 64px 20px 76px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(224, 109, 83, 0.28), transparent 45%),
+        radial-gradient(circle at 12% 85%, rgba(255, 255, 255, 0.12), transparent 40%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.86);
+      max-width: 680px;
+      margin-bottom: 26px;
+    }
+    .route-ribbon {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .route-pill {
+      background: rgba(255, 255, 255, 0.14);
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .route-arrow {
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.85rem;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      max-width: 760px;
+    }
+    .stat-card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 4px;
+    }
+    .stat-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1040px;
+      margin: -34px auto 64px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Key Alerts Banner */
+    .alerts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .alert-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--accent);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .alert-box.warn { border-left-color: var(--warn-border); }
+    .alert-box.info { border-left-color: var(--primary); }
+    .alert-icon { font-size: 1.35rem; line-height: 1.2; }
+    .alert-title { font-weight: 800; font-size: 0.95rem; margin-bottom: 3px; }
+    .alert-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Section Header */
+    .section { margin-bottom: 44px; scroll-margin-top: 84px; }
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Day Switcher & Filters */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+      background: var(--surface);
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    .day-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .filter-btn:hover { background: var(--surface-soft); }
+    .filter-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* Day Panel */
+    .day-panel { display: none; }
+    .day-panel.active { display: block; }
+    .day-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .day-banner h3 { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+    .day-banner p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* Timeline Cards */
+    .timeline {
+      position: relative;
+      padding-left: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: var(--border);
+    }
+    .stop-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.2s ease;
+    }
+    .stop-card:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+    .stop-card.done {
+      opacity: 0.62;
+      background: #fafcfd;
+    }
+    .stop-card.done .stop-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .stop-dot {
+      position: absolute;
+      left: -25px;
+      top: 22px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 3px solid var(--primary);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .stop-card.done .stop-dot {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+    .stop-card.done .stop-dot::after {
+      content: "✓";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .stop-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .stop-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .time-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 3px 10px;
+      border-radius: 8px;
+    }
+    .cat-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--text-muted);
+    }
+    .cat-tag.transport { background: #e8f1fb; color: #1d4ed8; }
+    .cat-tag.food { background: #fef3e8; color: #c2410c; }
+    .cat-tag.spot { background: #e6f6ee; color: #15803d; }
+    .cat-tag.stay { background: #f3e8ff; color: #7e22ce; }
+
+    .stop-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .stop-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+    .stop-alert {
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .stop-alert.danger {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+    .stop-alert.warn {
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+    }
+    .stop-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 11px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .btn-sm:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+    .btn-check.checked {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Food & Souvenir Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .food-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .food-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .food-card.done {
+      border-color: var(--primary);
+      background: #f4fafb;
+    }
+    .food-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .food-name { font-weight: 800; font-size: 1rem; }
+    .food-day {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--text-muted);
+    }
+    .food-note { font-size: 0.85rem; color: var(--text-muted); }
+    .food-status {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .food-card.done .food-status { color: var(--primary); }
+
+    /* Two-column Tools: Checklist + Notes */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .panel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .panel-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .check-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: var(--bg);
+    }
+    .check-item label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      flex: 1;
+    }
+    .check-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .check-item.done label {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .del-btn {
+      border: none;
+      background: transparent;
+      color: #9ca3af;
+      cursor: pointer;
+      font-size: 0.95rem;
+      padding: 2px 6px;
+    }
+    .del-btn:hover { color: var(--danger-border); }
+    .add-row {
+      display: flex;
+      gap: 8px;
+    }
+    .add-row input {
+      flex: 1;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .add-row input:focus { border-color: var(--primary); }
+    .btn-primary {
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 9px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn-primary:hover { opacity: 0.92; }
+
+    textarea.notes-area {
+      width: 100%;
+      min-height: 210px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      resize: vertical;
+      outline: none;
+      background: var(--bg);
+    }
+    textarea.notes-area:focus {
+      border-color: var(--primary);
+      background: #fff;
+    }
+    .save-hint {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 1040px;
+      margin: 0 auto 48px;
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 48px 18px 64px; }
+      .nav-links { width: 100%; justify-content: flex-start; }
+      .timeline { padding-left: 22px; }
+      .stop-card { padding: 14px 15px; }
+    }
+    @media print {
+      .navbar, .controls-bar, .stop-actions, .add-row, footer button { display: none !important; }
+      .day-panel { display: block !important; margin-bottom: 24px; }
+      body { background: #fff; }
+      .stop-card, .panel-card, .food-card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#top" class="brand"><span class="brand-dot"></span> 宜蘭兩天一夜 11/27–11/28</a>
+      <nav class="nav-links">
+        <a href="#itinerary">行程表</a>
+        <a href="#food">必買美食</a>
+        <a href="#tools">清單與筆記</a>
+      </nav>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-badge">🌊 YILAN 2D1N TRIP · 11/27 – 11/28</div>
+      <h1>宜蘭兩天一夜之旅</h1>
+      <p class="hero-sub">從中壢出發，一路沿著東北角單車吹海風、喝海景咖啡、賞蘭陽百萬夜景，隔天吃老宅咖哩、看水豚梅花鹿、逛羅東夜市滿載而歸。</p>
+
+      <div class="route-ribbon">
+        <span class="route-pill">中壢</span><span class="route-arrow">→</span>
+        <span class="route-pill">台北轉乘</span><span class="route-arrow">→</span>
+        <span class="route-pill">福隆</span><span class="route-arrow">→</span>
+        <span class="route-pill">外澳</span><span class="route-arrow">→</span>
+        <span class="route-pill">礁溪</span><span class="route-arrow">→</span>
+        <span class="route-pill">宜蘭</span><span class="route-arrow">→</span>
+        <span class="route-pill">羅東</span><span class="route-arrow">→</span>
+        <span class="route-pill">台北</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-label">出發班次 (11/27)</div>
+          <div class="stat-val">07:32 自強 102</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">回程抵達 (11/28)</div>
+          <div class="stat-val">21:00 市政府</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">目前行程進度</div>
+          <div class="stat-val" id="heroProgress">0 / 24 站</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Key Reminders -->
+    <div class="alerts-grid">
+      <div class="alert-box">
+        <div class="alert-icon">🚆</div>
+        <div>
+          <div class="alert-title">Day 1 12:44 福隆往外澳別錯過</div>
+          <div class="alert-desc">區間車僅 22 分鐘，沒搭到下一班要等 1 小時，12:20 準時回到福隆車站最保險。</div>
+        </div>
+      </div>
+      <div class="alert-box warn">
+        <div class="alert-icon">🍛</div>
+        <div>
+          <div class="alert-title">Day 2 馬桂爺爺「前七日預約」</div>
+          <div class="alert-desc">務必提前 7 天（11/21）完成預約，11:40 準時入場享用老宅咖哩。</div>
+        </div>
+      </div>
+      <div class="alert-box info">
+        <div class="alert-icon">🚌</div>
+        <div>
+          <div class="alert-title">空ㄟ接駁 & 壯圍大橋站</div>
+          <div class="alert-desc">空ㄟ農場接駁車 10–15 分一班、用餐限 90 分鐘；Day 2 公車 791/1787/1788 於「壯圍大橋站」下車。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Itinerary Section -->
+    <section class="section" id="itinerary">
+      <div class="section-header">
+        <h2 class="section-title">行程時間軸 <span class="section-tag">點擊圓點或按鈕即可打卡</span></h2>
+      </div>
+
+      <div class="controls-bar">
+        <div class="day-tabs">
+          <button class="tab-btn active" data-day="all">全部展開</button>
+          <button class="tab-btn" data-day="day1">DAY 1｜11/27 (福隆・外澳・礁溪)</button>
+          <button class="tab-btn" data-day="day2">DAY 2｜11/28 (宜蘭・動物王國・羅東)</button>
+        </div>
+        <div class="filter-pills">
+          <button class="filter-btn active" data-filter="all">全部</button>
+          <button class="filter-btn" data-filter="transport">交通</button>
+          <button class="filter-btn" data-filter="food">美食</button>
+          <button class="filter-btn" data-filter="spot">景點</button>
+        </div>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="day-panel active" id="panel-day1">
+        <div class="day-banner">
+          <div>
+            <h3>DAY 1｜11/27 福隆・外澳・礁溪</h3>
+            <p>東北角單車、伯朗城堡海景咖啡、礁溪伴手禮、空ㄟ農場夕陽夜景</p>
+          </div>
+          <span class="section-tag" id="day1Count">0 / 12 完成</span>
+        </div>
+        <div class="timeline" id="timeline-day1"></div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="day-panel active" id="panel-day2" style="margin-top: 26px;">
+        <div class="day-banner">
+          <div>
+            <h3>DAY 2｜11/28 宜蘭市・動物王國・羅東</h3>
+            <p>馬桂爺爺咖哩、動物王國互動、羅東夜市美食、諾貝爾奶凍捲</p>
+          </div>
+          <span class="section-tag" id="day2Count">0 / 12 完成</span>
+        </div>
+        <div class="timeline" id="timeline-day2"></div>
+      </div>
+    </section>
+
+    <!-- Food & Souvenirs -->
+    <section class="section" id="food">
+      <div class="section-header">
+        <h2 class="section-title">美食與伴手禮清單 <span class="section-tag">點擊標記已吃／已買</span></h2>
+      </div>
+      <div class="cards-grid" id="foodGrid"></div>
+    </section>
+
+    <!-- Checklist & Notes -->
+    <section class="section" id="tools">
+      <div class="section-header">
+        <h2 class="section-title">行前準備與隨身筆記</h2>
+      </div>
+      <div class="tools-grid">
+        <div class="panel-card">
+          <h3>✅ 出發前待辦清單</h3>
+          <ul class="checklist" id="checklist"></ul>
+          <div class="add-row">
+            <input type="text" id="newTodoInput" placeholder="新增待辦項目（例如：雨傘、相機電池）" />
+            <button class="btn-primary" id="addTodoBtn">新增</button>
+          </div>
+        </div>
+        <div class="panel-card">
+          <h3>📝 旅途隨身筆記</h3>
+          <textarea class="notes-area" id="notesArea" placeholder="記錄訂位代號、飯店地址、花費或臨時想去的店…（會自動儲存在你的瀏覽器）"></textarea>
+          <div class="save-hint">
+            <span id="saveStatus">已自動儲存於本機瀏覽器</span>
+            <span>離線也能查看</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>宜蘭兩天一夜之旅 11/27 – 11/28 · 所有打卡與筆記皆自動儲存在本機</span>
+    <div style="display:flex; gap:8px;">
+      <button class="btn-sm" onclick="window.print()">🖨️ 列印 / 存成 PDF</button>
+      <button class="btn-sm" id="resetBtn">↺ 重置打卡紀錄</button>
+    </div>
+  </footer>
+
+  <script>
+    const ITINERARY = {
+      day1: [
+        {
+          id: "d1-1", time: "07:32 – 09:42", cat: "transport", catLabel: "台鐵轉乘",
+          title: "中壢出發 → 台北轉乘 → 抵達福隆",
+          desc: "07:32 中壢搭「自強號 102 車次」到台北，轉乘「區間快 4022」，09:42 抵達福隆火車站。",
+          map: "福隆火車站"
+        },
+        {
+          id: "d1-2", time: "09:42", cat: "food", catLabel: "早午餐",
+          title: "福隆便當早午餐",
+          desc: "出站吃經典福隆便當補充體力，準備騎腳踏車。",
+          map: "福隆便當"
+        },
+        {
+          id: "d1-3", time: "10:20", cat: "spot", catLabel: "單車景點",
+          title: "騎腳踏車遊草嶺古道",
+          desc: "租借腳踏車享受東北角海風與山海景色（預計遊玩約 2 小時）。",
+          map: "福隆草嶺古道"
+        },
+        {
+          id: "d1-4", time: "12:20", cat: "transport", catLabel: "集合還車",
+          title: "返回福隆車站",
+          desc: "歸還腳踏車並預留時間進站候車。",
+          map: "福隆火車站"
+        },
+        {
+          id: "d1-5", time: "12:44 – 13:06", cat: "transport", catLabel: "台鐵區間車",
+          title: "福隆 → 外澳（車程 22 分鐘）",
+          desc: "搭乘 12:44 區間車前往外澳車站。",
+          alert: { type: "danger", text: "⚠️ 重要提醒：沒搭到這班要等一個小時！" },
+          map: "外澳火車站"
+        },
+        {
+          id: "d1-6", time: "13:40", cat: "food", catLabel: "海景咖啡",
+          title: "搭 Uber 抵達伯朗咖啡城堡",
+          desc: "看海景放空！低消 100 元，預計只喝一杯飲料 + 甜點 ×1。",
+          alert: { type: "warn", text: "💡 備註：晚點還要吃東西，別點太飽。" },
+          map: "頭城城堡咖啡一館"
+        },
+        {
+          id: "d1-7", time: "15:00", cat: "transport", catLabel: "計程車",
+          title: "叫計程車離開伯朗咖啡城堡",
+          desc: "下山返回外澳車站準備搭火車往礁溪。",
+          map: "外澳火車站"
+        },
+        {
+          id: "d1-8", time: "15:38 – 15:51", cat: "transport", catLabel: "台鐵火車",
+          title: "外澳 → 礁溪火車站",
+          desc: "13 分鐘車程輕鬆抵達礁溪。",
+          map: "礁溪火車站"
+        },
+        {
+          id: "d1-9", time: "16:00", cat: "food", catLabel: "伴手禮",
+          title: "礁溪大街買宜蘭餅 & 亦順軒",
+          desc: "從車站步行過去約 10 分鐘，先買好人氣伴手禮。",
+          map: "亦順軒 礁溪店"
+        },
+        {
+          id: "d1-10", time: "16:30", cat: "stay", catLabel: "住宿",
+          title: "飯店 Check-in",
+          desc: "辦理入住、放行李稍作整理。",
+          map: "礁溪火車站"
+        },
+        {
+          id: "d1-11", time: "16:40", cat: "transport", catLabel: "計程車＋接駁",
+          title: "搭計程車到空ㄟ農場接駁區",
+          desc: "抵達山下專用接駁區轉搭接駁車上山（約 10–15 分鐘一班）。",
+          map: "空ㄟ農場 接駁車"
+        },
+        {
+          id: "d1-12", time: "17:20 – 19:30", cat: "spot", catLabel: "夜景餐廳",
+          title: "空ㄟ農場賞夕陽夜景 → 19:30 回飯店",
+          desc: "17:20 抵達餐廳吃窯烤披薩、看蘭陽平原夜景，19:30 返回飯店休息。",
+          alert: { type: "warn", text: "⏱️ 用餐時間限制 90 分鐘。" },
+          map: "空ㄟ農場"
+        }
+      ],
+      day2: [
+        {
+          id: "d2-1", time: "上午", cat: "food", catLabel: "早餐",
+          title: "飯店早餐",
+          desc: "悠閒享用飯店早餐並整理行李退房。",
+          map: "礁溪"
+        },
+        {
+          id: "d2-2", time: "上午", cat: "transport", catLabel: "飯店接駁車",
+          title: "搭乘飯店接駁車往礁溪火車站",
+          desc: "前往車站準備搭車往宜蘭市。",
+          map: "礁溪火車站"
+        },
+        {
+          id: "d2-3", time: "11:13 – 11:21", cat: "transport", catLabel: "台鐵區間車",
+          title: "礁溪 → 宜蘭火車站",
+          desc: "車程僅 8 分鐘；抵達後可視需要於宜蘭車站寄放行李。",
+          map: "宜蘭火車站"
+        },
+        {
+          id: "d2-4", time: "11:21 – 11:40", cat: "transport", catLabel: "步行 15 分",
+          title: "步行前往馬桂爺爺",
+          desc: "從宜蘭車站散步約 15 分鐘抵達巷弄老宅咖哩。",
+          map: "馬桂爺爺"
+        },
+        {
+          id: "d2-5", time: "11:40", cat: "food", catLabel: "預約午餐",
+          title: "馬桂爺爺咖哩午餐",
+          desc: "人氣濃郁日式咖哩專門店。",
+          alert: { type: "danger", text: "📅 重要提醒：務必前七日（11/21）完成預約！" },
+          map: "馬桂爺爺"
+        },
+        {
+          id: "d2-6", time: "13:00", cat: "transport", catLabel: "公車轉乘",
+          title: "走回宜蘭火車站轉搭公車",
+          desc: "搭乘公車 791、1787 或 1788 號，於「壯圍大橋站」下車。",
+          alert: { type: "warn", text: "🚏 記得在「壯圍大橋站」下車！" },
+          map: "壯圍大橋"
+        },
+        {
+          id: "d2-7", time: "14:30 – 16:30", cat: "spot", catLabel: "動物互動",
+          title: "動物王國（停留 2 小時）",
+          desc: "14:30 抵達與可愛動物近距離互動拍照，16:30 準備離開。",
+          map: "蘭陽動植物王國"
+        },
+        {
+          id: "d2-8", time: "17:09 – 17:19", cat: "transport", catLabel: "台鐵區間車",
+          title: "宜蘭火車站 → 羅東車站",
+          desc: "搭乘 17:09–17:19 區間車（備案：17:56 區間車），預計 18:00 前抵達羅東車站。",
+          map: "羅東火車站"
+        },
+        {
+          id: "d2-9", time: "18:00", cat: "transport", catLabel: "步行 15 分",
+          title: "羅東車站步行至羅東夜市",
+          desc: "沿公正路散步約 15 分鐘抵達羅東夜市。",
+          map: "羅東夜市"
+        },
+        {
+          id: "d2-10", time: "18:15", cat: "food", catLabel: "夜市美食",
+          title: "羅東夜市 & 購買諾貝爾奶凍捲",
+          desc: "大啖宜蘭在地夜市小吃，並買好諾貝爾奶凍捲帶回家。",
+          map: "諾貝爾奶凍 羅東店"
+        },
+        {
+          id: "d2-11", time: "19:30", cat: "transport", catLabel: "Uber",
+          title: "搭 Uber 前往羅東轉運站",
+          desc: "提早前往轉運站候車、買票或取票。",
+          map: "羅東轉運站"
+        },
+        {
+          id: "d2-12", time: "20:00 – 21:00", cat: "transport", catLabel: "客運返程",
+          title: "羅東轉運站搭車回台北 → 21:00 抵達台北市政府",
+          desc: "順利結束充實的宜蘭兩天一夜小旅行！",
+          map: "市府轉運站"
+        }
+      ]
+    };
+
+    const FOODS = [
+      { id: "f1", name: "福隆便當", day: "DAY 1", note: "09:42 抵達福隆當早午餐" },
+      { id: "f2", name: "伯朗咖啡城堡", day: "DAY 1", note: "低消 100，飲料 1 杯 + 甜點 ×1" },
+      { id: "f3", name: "宜蘭餅", day: "DAY 1", note: "16:00 礁溪大街伴手禮" },
+      { id: "f4", name: "亦順軒", day: "DAY 1", note: "16:00 礁溪大街伴手禮（奶凍捲／麵包）" },
+      { id: "f5", name: "空ㄟ農場", day: "DAY 1", note: "17:20 看夕陽夜景，用餐 90 分鐘" },
+      { id: "f6", name: "馬桂爺爺咖哩", day: "DAY 2", note: "11:40 午餐，記得前七日預約！" },
+      { id: "f7", name: "羅東夜市小吃", day: "DAY 2", note: "18:15 開吃在地必吃小吃" },
+      { id: "f8", name: "諾貝爾奶凍捲", day: "DAY 2", note: "逛羅東夜市順路必買伴手禮" }
+    ];
+
+    const DEFAULT_TODOS = [
+      { id: "t1", text: "11/21 搶「馬桂爺爺」前七日預約", done: false },
+      { id: "t2", text: "確認 11/27 07:32 中壢自強號 102 車票", done: false },
+      { id: "t3", text: "確認飯店接駁車時刻與行李寄放", done: false },
+      { id: "t4", text: "悠遊卡加值、帶行動電源與輕便雨具", done: false }
+    ];
+
+    // LocalStorage Helpers
+    const STORE_KEY = "yilan_trip_1127_v1";
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORE_KEY);
+        if (raw) return JSON.parse(raw);
+      } catch (e) {}
+      return { doneStops: {}, doneFoods: {}, todos: DEFAULT_TODOS, notes: "" };
+    }
+    let state = loadState();
+    function saveState() {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    let activeDay = "all";
+    let activeFilter = "all";
+
+    function renderTimelines() {
+      ["day1", "day2"].forEach(dayKey => {
+        const container = document.getElementById(`timeline-${dayKey}`);
+        const items = ITINERARY[dayKey];
+        container.innerHTML = "";
+
+        let completed = 0;
+        items.forEach(item => {
+          const isDone = !!state.doneStops[item.id];
+          if (isDone) completed++;
+
+          if (activeFilter !== "all" && item.cat !== activeFilter) return;
+
+          const card = document.createElement("div");
+          card.className = `stop-card ${isDone ? "done" : ""}`;
+          const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.map)}`;
+
+          card.innerHTML = `
+            <div class="stop-dot" title="標記完成" data-toggle="${item.id}"></div>
+            <div class="stop-top">
+              <div class="stop-meta">
+                <span class="time-badge">${item.time}</span>
+                <span class="cat-tag ${item.cat}">${item.catLabel}</span>
+              </div>
+              <div class="stop-actions">
+                <a class="btn-sm" href="${mapUrl}" target="_blank" rel="noopener">📍 地圖</a>
+                <button class="btn-sm btn-check ${isDone ? "checked" : ""}" data-toggle="${item.id}">
+                  ${isDone ? "✓ 已完成" : "打卡"}
+                </button>
+              </div>
+            </div>
+            <div class="stop-title">${item.title}</div>
+            <div class="stop-desc">${item.desc}</div>
+            ${item.alert ? `<div class="stop-alert ${item.alert.type}">${item.alert.text}</div>` : ""}
+          `;
+          container.appendChild(card);
+        });
+
+        document.getElementById(`${dayKey}Count`).textContent = `${completed} / ${items.length} 完成`;
+      });
+
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const total = ITINERARY.day1.length + ITINERARY.day2.length;
+      const done = Object.values(state.doneStops).filter(Boolean).length;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("progressFill").style.width = `${pct}%`;
+      document.getElementById("heroProgress").textContent = `${done} / ${total} 站`;
+    }
+
+    function renderFoods() {
+      const grid = document.getElementById("foodGrid");
+      grid.innerHTML = "";
+      FOODS.forEach(f => {
+        const isDone = !!state.doneFoods[f.id];
+        const card = document.createElement("div");
+        card.className = `food-card ${isDone ? "done" : ""}`;
+        card.innerHTML = `
+          <div>
+            <div class="food-head">
+              <span class="food-name">${f.name}</span>
+              <span class="food-day">${f.day}</span>
+            </div>
+            <p class="food-note" style="margin-top:6px;">${f.note}</p>
+          </div>
+          <div class="food-status">${isDone ? "✓ 已收服" : "○ 尚未打卡"}</div>
+        `;
+        card.addEventListener("click", () => {
+          state.doneFoods[f.id] = !state.doneFoods[f.id];
+          saveState();
+          renderFoods();
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    function renderTodos() {
+      const ul = document.getElementById("checklist");
+      ul.innerHTML = "";
+      state.todos.forEach((todo, idx) => {
+        const li = document.createElement("li");
+        li.className = `check-item ${todo.done ? "done" : ""}`;
+        li.innerHTML = `
+          <label>
+            <input type="checkbox" ${todo.done ? "checked" : ""} data-todo="${idx}" />
+            <span>${todo.text}</span>
+          </label>
+          <button class="del-btn" title="刪除" data-del="${idx}">✕</button>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    // Event Delegation
+    document.addEventListener("click", e => {
+      const toggleId = e.target.getAttribute("data-toggle");
+      if (toggleId) {
+        state.doneStops[toggleId] = !state.doneStops[toggleId];
+        saveState();
+        renderTimelines();
+      }
+      const delIdx = e.target.getAttribute("data-del");
+      if (delIdx !== null) {
+        state.todos.splice(Number(delIdx), 1);
+        saveState();
+        renderTodos();
+      }
+    });
+
+    document.getElementById("checklist").addEventListener("change", e => {
+      const idx = e.target.getAttribute("data-todo");
+      if (idx !== null) {
+        state.todos[Number(idx)].done = e.target.checked;
+        saveState();
+        renderTodos();
+      }
+    });
+
+    document.getElementById("addTodoBtn").addEventListener("click", () => {
+      const input = document.getElementById("newTodoInput");
+      const val = input.value.trim();
+      if (!val) return;
+      state.todos.push({ id: "t" + Date.now(), text: val, done: false });
+      input.value = "";
+      saveState();
+      renderTodos();
+    });
+    document.getElementById("newTodoInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") document.getElementById("addTodoBtn").click();
+    });
+
+    // Day tabs
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeDay = btn.dataset.day;
+        const p1 = document.getElementById("panel-day1");
+        const p2 = document.getElementById("panel-day2");
+        if (activeDay === "all") {
+          p1.classList.add("active");
+          p2.classList.add("active");
+          p2.style.marginTop = "26px";
+        } else if (activeDay === "day1") {
+          p1.classList.add("active");
+          p2.classList.remove("active");
+        } else {
+          p1.classList.remove("active");
+          p2.classList.add("active");
+          p2.style.marginTop = "0";
+        }
+      });
+    });
+
+    // Category filters
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.filter;
+        renderTimelines();
+      });
+    });
+
+    // Notes
+    const notesArea = document.getElementById("notesArea");
+    notesArea.value = state.notes || "";
+    notesArea.addEventListener("input", () => {
+      state.notes = notesArea.value;
+      saveState();
+      document.getElementById("saveStatus").textContent = "已儲存 · " + new Date().toLocaleTimeString("zh-TW", { hour: "2-digit", minute: "2-digit" });
+    });
+
+    // Reset
+    document.getElementById("resetBtn").addEventListener("click", () => {
+      if (confirm("確定要清除所有打卡與美食勾選紀錄嗎？（筆記與待辦會保留）")) {
+        state.doneStops = {};
+        state.doneFoods = {};
+        saveState();
+        renderTimelines();
+        renderFoods();
+      }
+    });
+
+    // Init
+    renderTimelines();
+    renderFoods();
+    renderTodos();
+  </script>
+</body>
+</html>
